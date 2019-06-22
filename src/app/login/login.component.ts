@@ -13,6 +13,7 @@ export class User {
 })
 export class LoginComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<User>();
+
   @Input() enabled = true;
 
   myForm: FormGroup;

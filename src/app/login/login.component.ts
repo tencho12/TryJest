@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from "@angular/core";
+import { Component, OnInit, Output, Input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EventEmitter } from "@angular/core";
 
@@ -13,6 +13,7 @@ export class User {
 })
 export class LoginComponent implements OnInit {
   @Output() loggedIn = new EventEmitter<User>();
+  @Input() enabled = true;
 
   myForm: FormGroup;
 
@@ -33,13 +34,21 @@ export class LoginComponent implements OnInit {
     return this.myForm.get("password");
   }
 
-  login() {
-    console.log("login ${this.myForm.value}");
-    if (this.myForm.valid) {
-      this.loggedIn.emit(
-        new User(this.myForm.value.email, this.myForm.value.password)
-      );
-      console.log("loged in");
+  // login() {
+  //   console.log("login ${this.myForm.value}");
+  //   if (this.myForm.valid) {
+  //     this.loggedIn.emit(
+  //       new User(this.myForm.value.email, this.myForm.value.password)
+  //     );
+  //     console.log("loged in");
+  //   }
+  // }
+
+  login(email, password) {
+    console.log(`Login ${email} ${password}`);
+    if (email && password) {
+      console.log("emitting");
+      this.loggedIn.emit(new User(email, password));
     }
   }
 }

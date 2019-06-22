@@ -41,7 +41,12 @@
           </div>
         </div>
         <div class="form-group">
-          <button class="form-control btn btn-primary" type="submit">
+          <button
+            class="form-control btn btn-primary"
+            type="button"
+            [disabled]="!enabled"
+            (click)="login(email.value, password.value)"
+          >
             Login
           </button>
         </div>

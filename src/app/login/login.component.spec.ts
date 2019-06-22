@@ -45,6 +45,7 @@ describe("LoginComponent", () => {
 
     expect(errors["required"]).toBeTruthy();
 
+    //if there is password pattern in validation
     // email.setValue("test");
     // errors = email.errors || {};
     // expect(errors["pattern"]).toBeTruthy();

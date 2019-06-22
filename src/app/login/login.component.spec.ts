@@ -74,4 +74,17 @@ describe("LoginComponent", () => {
   });
 
   //testing output
+  test("Entering email and password emits loggedIn event", () => {
+    let user: User;
+
+    loginEl.nativeElement.value = "ten@gmail.com";
+    passwordEl.nativeElement.value = "23456789";
+
+    component.loggedIn.subscribe(value => (user = value));
+
+    submitEl.triggerEventHandler("click", null);
+
+    expect(user.email).toBe("ten@gmail.com");
+    expect(user.password).toBe("23456789");
+  });
 });
